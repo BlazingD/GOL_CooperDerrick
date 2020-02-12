@@ -32,7 +32,7 @@ namespace GOL_CooperDerrick
             // Setup the timer
             timer.Interval = 100; // milliseconds
             timer.Tick += Timer_Tick;
-            timer.Enabled = true; // start timer running
+            timer.Enabled = false; // start timer running
         }
 
         // Calculate the next generation of cells
@@ -117,6 +117,44 @@ namespace GOL_CooperDerrick
                 // Tell Windows you need to repaint
                 graphicsPanel1.Invalidate();
             }
+        }
+
+        //Sets the array back to it initial state
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                // Iterate through the universe in the x, left to right
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    universe[x, y] = false;
+                    
+                }
+            }
+            
+            // Tell Windows you need to repaint
+            graphicsPanel1.Invalidate();
+        }
+
+        private void StartToolStripButton1_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = true; // start timer running
+        }
+
+        private void pauseToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (timer.Enabled == true)
+            {
+                timer.Enabled = false; // stop timer running
+            }
+
+            else
+                timer.Enabled = true; //resume timer
+        }
+
+        private void nextToolStripButton3_Click(object sender, EventArgs e)
+        {
+            NextGeneration();
         }
     }
 }
