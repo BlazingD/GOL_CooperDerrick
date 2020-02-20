@@ -38,7 +38,13 @@ namespace GOL_CooperDerrick
         // Calculate the next generation of cells
         private void NextGeneration()
         {
+           /* bool[,] universe = new bool[5, 5];
+            bool[,] scratchPad = new bool[5, 5];
 
+            // Swap them...
+            bool[,] temp = universe;
+            universe = scratchPad;
+            scratchPad = temp;*/
 
             // Increment generation count
             generations++;
@@ -135,12 +141,12 @@ namespace GOL_CooperDerrick
             // Tell Windows you need to repaint
             graphicsPanel1.Invalidate();
         }
-
+        //Starts the timer
         private void StartToolStripButton1_Click(object sender, EventArgs e)
         {
             timer.Enabled = true; // start timer running
         }
-
+        //Pauses the timer
         private void pauseToolStripButton_Click(object sender, EventArgs e)
         {
             if (timer.Enabled == true)
@@ -151,7 +157,7 @@ namespace GOL_CooperDerrick
             else
                 timer.Enabled = true; //resume timer
         }
-
+        //Advances the timer by one count
         private void nextToolStripButton3_Click(object sender, EventArgs e)
         {
             NextGeneration();
